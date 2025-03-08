@@ -1,0 +1,10 @@
+# Ignorar node_modules
+node_modules/
+
+# Ignorar archivos de configuración sensibles
+.env
+src/config.js
+
+# Archivos de logs y depuración
+npm-debug.log
+yarn-error.log
