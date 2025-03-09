@@ -12,9 +12,8 @@ const app = express();
 
 app.use(cors({
   credentials: true,
-  origin: FRONTEND_URL,
-})
-);
+  origin: [FRONTEND_URL, FRONTEND_URL_WQQJ, FRONTEND_URL_I24M ],
+}));
 
 app.use(morgan('dev'));
 app.use(express.json());
