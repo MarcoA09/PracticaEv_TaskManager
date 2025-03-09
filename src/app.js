@@ -6,7 +6,7 @@ import authRoutes from './routes/auth.routes.js';
 import taskRoutes from './routes/tasks.routes.js';
 import groupRoutes from './routes/groups.routes.js';
 import colaboradoresRoutes from './routes/colaboradores.routes.js';
-import { FRONTEND_URL } from "./config.js";
+const FRONTEND_URL = process.env.FRONTEND_URL
 
 const app = express();
 
