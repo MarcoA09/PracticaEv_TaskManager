@@ -2,7 +2,6 @@ import User from "../models/user.model.js";
 import Colab from "../models/colaborador.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { TOKEN_SECRET } from "../config.js";
 import { createAccessToken } from "../libs/jwt.js";
 
 const TOKEN_SECRET = process.env.TOKEN_SECRET
