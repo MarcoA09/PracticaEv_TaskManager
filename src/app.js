@@ -12,11 +12,24 @@ const FRONTEND_URL_I24M = process.env.FRONTEND_URL_I24M;
 
 const app = express();
 
+
+const allowedOrigins = [
+  'https://ev-r-task-manager-front.vercel.app',
+  'https://ev-r-task-manager-front-wqqj.vercel.app',
+  'https://ev-r-task-manager-front-i24m.vercel.app', /
+];
+
 app.use(cors({
-  credentials: true,
-  origin: [FRONTEND_URL, FRONTEND_URL_WQQJ, FRONTEND_URL_I24M ],
-   allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true, 
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      return callback(null, true);  
+    }
+    return callback(new Error('CORS policy does not allow access from this origin'));
+  },
 }));
+
+
 
 app.options('*', cors());
 
