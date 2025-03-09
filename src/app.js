@@ -27,7 +27,7 @@ app.use("/api", colaboradoresRoutes);
 
 if (process.env.NODE_ENV === "production") {
   const path = await import("path");
-  a app.use(express.static(path.join(__dirname, '..', 'dist')));
+  app.use(express.static(path.join(__dirname, '..', 'dist')));
 
   app.get("*", (req, res) => {
     console.log(path.resolve("client", "dist", "index.html") );
