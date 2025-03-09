@@ -16,7 +16,7 @@ const app = express();
 const allowedOrigins = [
   'https://ev-r-task-manager-front.vercel.app',
   'https://ev-r-task-manager-front-wqqj.vercel.app',
-  'https://ev-r-task-manager-front-i24m.vercel.app', /
+  'https://ev-r-task-manager-front-i24m.vercel.app', 
 ];
 
 app.use(cors({
