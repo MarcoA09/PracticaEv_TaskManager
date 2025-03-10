@@ -80,14 +80,17 @@ export const updateTask = async (req, res) => {
       return res.status(404).json({ message: "Tarea no encontrada" });
     }
     
-    console.log("ID de usuario actual:", req.user.id);
-    console.log("ID de usuario asignado a la tarea:", task.user_assigned.toString());
+   
+    const isAssignedUser = task.user_assigned.toString() === req.user.id;
+    const isCreatorUser = task.user.toString() === req.user.id;
+    const isSuperAdmin = req.user.rol === "SuperAdmin";
     
-    if (task.user_assigned.toString() !== req.user.id) {
+    if (!isAssignedUser && !isCreatorUser && !isSuperAdmin) {
       return res.status(403).json({ 
-        message: "No tienes permiso para actualizar esta tarea. Solo el usuario asignado puede modificarla.",
+        message: "No tienes permiso para actualizar esta tarea. Solo el usuario asignado, el creador o un SuperAdmin pueden modificarla.",
         currentUserId: req.user.id,
-        assignedUserId: task.user_assigned.toString()
+        assignedUserId: task.user_assigned.toString(),
+        creatorUserId: task.user.toString()
       });
     }
     
